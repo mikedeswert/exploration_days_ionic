@@ -1,0 +1,23 @@
+{
+  "name": "exploration_days_ionic",
+  "version": "1.0.0",
+  "description": "Ionic",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikedeswert/exploration_days_ionic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikedeswert/exploration_days_ionic/issues"
+  },
+  "homepage": "https://github.com/mikedeswert/exploration_days_ionic#readme",
+  "devDependencies": {
+    "cordova": "^6.0.0",
+    "ionic": "^1.7.14"
+  }
+}
