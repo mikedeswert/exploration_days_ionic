@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('explorationdays', ['ionic', 'controllers', 'services', 'events', 'utils', 'uuid4'])
+angular.module('explorationdays', ['ionic', 'ngCordova', 'controllers', 'services', 'events', 'utils', 'uuid4'])
 
     .run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
@@ -81,11 +81,12 @@ angular.module('explorationdays', ['ionic', 'controllers', 'services', 'events',
             })
 
             .state('tab.events', {
-                cache: false,
                 url: '/events',
                 views: {
                     'tab-events': {
-                        templateUrl: 'templates/tab-events.html'
+                        templateUrl: 'templates/tab-events.html',
+                        controller: 'eventListController',
+                        controllerAs: 'EventListCtrl'
                     }
                 }
             })

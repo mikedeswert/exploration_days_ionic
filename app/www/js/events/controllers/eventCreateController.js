@@ -1,5 +1,5 @@
-angular.module('events').controller('eventCreateController', ['$location', 'eventsService', 'events',
-    function($location, eventsService, events) {
+angular.module('events').controller('eventCreateController', ['$location', '$cordovaCamera', '$cordovaCapture', 'eventsService', 'events',
+    function ($location, $cordovaCamera, $cordovaCapture, eventsService, events) {
         var ctrl = this;
         init();
 
@@ -7,9 +7,10 @@ angular.module('events').controller('eventCreateController', ['$location', 'even
             ctrl.event = events.create();
         }
 
-        ctrl.saveEvent = function() {
+        ctrl.saveEvent = function () {
             eventsService.addEvent(ctrl.event);
             $location.path('/tab/events');
-        }
+        };
+
     }
 ]);
