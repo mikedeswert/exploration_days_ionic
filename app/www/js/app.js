@@ -103,6 +103,7 @@ angular.module('explorationdays', ['ionic', 'ngCordova', 'controllers', 'service
             })
 
             .state('tab.event-detail', {
+                cache: false,
                 url: '/events/:eventId',
                 views: {
                     'tab-events': {

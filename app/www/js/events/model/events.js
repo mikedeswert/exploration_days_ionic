@@ -14,6 +14,8 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
 
     function Event() {
         this.id = uuid4.generate();
+        this.title = '';
+        this.description = '';
         this.date = new Date();
         this.startTime = getDefaultStartTime();
         this.endTime = new Date(this.startTime.getTime() + ONE_HOUR_IN_MILLISECONDS);
@@ -21,6 +23,8 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
         this.copy = function() {
             var event = new Event();
             event.id = this.id;
+            event.title = this.title;
+            event.description = this.description;
             event.date = new Date(this.date.getTime());
             event.startTime = new Date(this.startTime.getTime());
             event.endTime = new Date(this.endTime.getTime());
