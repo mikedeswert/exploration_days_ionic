@@ -19,6 +19,7 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
         this.date = new Date();
         this.startTime = getDefaultStartTime();
         this.endTime = new Date(this.startTime.getTime() + ONE_HOUR_IN_MILLISECONDS);
+        this.hasCalendarEntry = false;
 
         this.getStartDate = function() {
             var startDate = new Date(this.date.getTime());

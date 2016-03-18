@@ -17,9 +17,21 @@
                       ng-repeat="event in EventListCtrl.events"
                       type="item-text-wrap" href="#/tab/events/{{event.id}}"
                       href="#/tab/events/{{event.id}}">
+                <img style="border-radius: 5px 20px 5px;
+                            background: #BADA55;"
+                     ng-src="{{event.imageURI}}"/>
                 <h2>{{event.title}}</h2>
+                <p>{{event.description}}</p>
+                <div class="row">
+                    <div class="col col-30">
+                        <p><b>When:</b></p>
+                    </div>
+                    <div class="col col-70">
+                        <p>{{event.date | date:'dd/MM/yyyy'}} <br />
+                           {{event.startTime | date:'HH:mm'}}-{{event.endTime | date:'HH:mm'}}</p>
+                    </div>
+                </div>
                 <i class="icon ion-chevron-right icon-accessory"></i>
-                <div></div>
 
                 <ion-delete-button class="ion-minus-circled"
                                    ng-click="EventListCtrl.removeEvent(event)">
@@ -27,9 +39,6 @@
 
                 <ion-option-button class="button-positive" data-ng-click="EventListCtrl.addToCalendar(event)">
                     <i class="icon ion-calendar"></i>
-                </ion-option-button>
-                <ion-option-button class="button-assertive" data-ng-click="EventListCtrl.removeEvent(event)">
-                    Delete
                 </ion-option-button>
             </ion-item>
         </ion-list>

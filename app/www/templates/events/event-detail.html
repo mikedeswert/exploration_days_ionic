@@ -5,15 +5,32 @@
         </ion-nav-button>
     </ion-nav-buttons>
     <ion-content>
-        <div class="row">
+        <div class="row" style="background: #BADA55;"
+             data-ng-if="EventDetailCtrl.event.imageURI !== undefined">
             <div class="col col-33"></div>
             <div class="col col-33">
-                <img class="col" ng-src="{{EventDetailCtrl.event.imageURI}}">
+                <img class="col"
+                     style="border-radius: 5px 20px 5px;"
+                     data-ng-src="{{EventDetailCtrl.event.imageURI}}">
             </div>
             <div class="col col-33"></div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col col-33"></div>
+            <div class="col col-33">
+                <p><b>{{EventDetailCtrl.event.date | date: 'EEE dd MMM yyyy'}}</b></p>
+            </div>
+            <div class="col col-33"></div>
+        </div>
+        <div class="row">
+            <div class="col col-33"></div>
+            <div class="col col-33">
+                <p>{{EventDetailCtrl.event.startTime | date: 'HH:mm'}} - {{EventDetailCtrl.event.endTime | date: 'HH:mm'}}</p>
+            </div>
+            <div class="col col-33"></div>
+        </div>
+        <div class="row">
+            <div class="col padding">
                 <p>
                     {{EventDetailCtrl.event.description}}
                 </p>

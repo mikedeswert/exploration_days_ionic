@@ -1,6 +1,6 @@
 <div class="list">
     <label class="item item-input">
-        <input type="text" placeholder="Title" data-ng-model="EventEditorDirectiveCtrl.event.title" required />
+        <input type="text" placeholder="Title" data-ng-model="EventEditorDirectiveCtrl.event.title" required/>
     </label>
     <label class="item item-input">
         <span class="input-label">Date</span>
@@ -8,18 +8,30 @@
     </label>
     <label class="item item-input">
         <span class="input-label">Start time</span>
-        <input type="time" data-ng-model="EventEditorDirectiveCtrl.event.startTime"/>
+        <input type="time"
+               data-ng-model="EventEditorDirectiveCtrl.event.startTime"
+               data-ng-change="EventEditorDirectiveCtrl.checkEndTimeValidity()"/>
     </label>
     <label class="item item-input">
         <span class="input-label">End time</span>
         <input type="time" data-ng-model="EventEditorDirectiveCtrl.event.endTime"/>
     </label>
     <label class="item item-input">
-        <textarea rows="6" placeholder="Description" data-ng-model="EventEditorDirectiveCtrl.event.description"></textarea>
+        <textarea rows="6" placeholder="Description"
+                  data-ng-model="EventEditorDirectiveCtrl.event.description"></textarea>
     </label>
     <div class="button-bar">
-        <button class="button button-balanced" data-ng-click="EventEditorDirectiveCtrl.takePhoto()">Take Picture</button>
-        <button class="button button-calm" data-ng-click="EventEditorDirectiveCtrl.choosePhoto()">Choose Picture</button>
+        <button class="button button-balanced" data-ng-click="EventEditorDirectiveCtrl.takePhoto()">Take Picture
+        </button>
+        <button class="button button-calm" data-ng-click="EventEditorDirectiveCtrl.choosePhoto()">Choose Picture
+        </button>
     </div>
-    <img ng-src="{{EventEditorDirectiveCtrl.event.imageURI}}"/>
+    <div class="row">
+        <div class="col col-33"></div>
+        <div class="col col-33">
+            <img style="border-radius: 5px 20px 5px;"
+                 ng-src="{{EventEditorDirectiveCtrl.event.imageURI}}"/>
+        </div>
+        <div class="col col-33"></div>
+    </div>
 </div>

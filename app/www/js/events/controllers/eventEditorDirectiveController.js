@@ -1,5 +1,6 @@
 angular.module('events').controller('eventEditorDirectiveController', ['events', '$cordovaCamera', '$ionicPlatform', function (events, $cordovaCamera, $ionicPlatform) {
     var ctrl = this;
+    var ONE_HOUR_IN_MILLISECONDS = 60*60*1000;
     init();
 
     function init() {
@@ -9,6 +10,13 @@ angular.module('events').controller('eventEditorDirectiveController', ['events',
 
         ctrl.event = events.create();
     }
+
+    ctrl.checkEndTimeValidity = function() {
+        if(ctrl.event.startTime.getTime() <= ctrl.event.endTime.getTime())  {
+            return;
+        }
+        ctrl.event.endTime = new Date(ctrl.event.startTime.getTime() + ONE_HOUR_IN_MILLISECONDS);
+    };
 
     ctrl.takePhoto = function () {
         $ionicPlatform.ready(function () {
