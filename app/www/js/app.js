@@ -81,12 +81,11 @@ angular.module('explorationdays', ['ionic', 'ionic.utils', 'controllers', 'servi
             })
 
             .state('tab.events', {
+                cache: false,
                 url: '/events',
                 views: {
                     'tab-events': {
-                        templateUrl: 'templates/tab-events.html',
-                        controller: 'eventListController',
-                        controllerAs: 'EventListCtrl'
+                        templateUrl: 'templates/tab-events.html'
                     }
                 }
             })

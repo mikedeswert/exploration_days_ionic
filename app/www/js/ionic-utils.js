@@ -11,6 +11,12 @@ angular.module('ionic.utils', []).factory('$localstorage', ['$window', function 
         },
         getObject: function (key) {
             return JSON.parse($window.localStorage[key] || '{}');
+        },
+        setArray: function(key, value) {
+            this.setObject(key, value);
+        },
+        getArray: function(key) {
+            return JSON.parse($window.localStorage[key || '[]'])
         }
     }
 }]);
