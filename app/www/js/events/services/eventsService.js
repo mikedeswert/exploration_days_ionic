@@ -1,20 +1,26 @@
-angular.module('events').factory('eventsService', ['$localstorage', function($localstorage) {
+angular.module('events').factory('eventsService', ['localStorage', function(localStorage) {
+    var events;
+
     return {
         getEvents: getEvents,
-        addEvent: addEvent
+        addEvent: addEvent,
+        removeEvent: removeEvent
     };
 
     function getEvents() {
-        var events = $localstorage.getObject('events');
-        if(!events.list) {
-            events.list = [];
+        if(events == undefined) {
+            events = localStorage.getArray('events');
         }
         return events;
     }
 
     function addEvent(event) {
-        var events = getEvents();
-        events.list.push(event);
-        $localstorage.setObject('events', events);
+        events.push(event);
+        localStorage.setObject('events', events);
+    }
+
+    function removeEvent(event) {
+        events.splice(events.indexOf(event), 1);
+        localStorage.setObject('events', events);
     }
 }]);

@@ -1,16 +1,19 @@
-<ion-view title="Events">
+<ion-view title="Events" data-ng-controller="eventListController as EventListCtrl">
     <ion-nav-buttons side="secondary">
         <a class="button button-icon icon ion-plus" href="#/tab/events/create"></a>
     </ion-nav-buttons>
-    <!--<div class="bar bar-header">
-        <div class="h1 title">Events</div>
-    </div>-->
     <ion-content>
         <ion-list>
             <ion-item class="item-remove-animate item-avatar item-icon-right"
-                      ng-repeat="event in EventListCtrl.events.list"
-                      type="item-text-wrap" href="#/tab/events/{{event.id}}">
+                      ng-repeat="event in EventListCtrl.events"
+                      type="item-text-wrap" href="#/tab/events/{{event.id}}"
+                      href="#/tab/chats/{{chat.id}}">
                 <h2>{{event.title}}</h2>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" data-ng-click="EventListCtrl.removeEvent(event)">
+                    Delete
+                </ion-option-button>
             </ion-item>
         </ion-list>
     </ion-content>

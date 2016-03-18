@@ -5,4 +5,8 @@ angular.module('events').controller('eventListController', ['eventsService', fun
     function init() {
         ctrl.events = eventsService.getEvents();
     }
+
+    ctrl.removeEvent = function(event) {
+        eventsService.removeEvent(event);
+    }
 }]);
