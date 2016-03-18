@@ -1,16 +1,30 @@
 <ion-view title="Events" data-ng-controller="eventListController as EventListCtrl">
     <ion-nav-buttons side="secondary">
-        <a class="button button-icon icon ion-plus" href="#/tab/events/create"></a>
+        <ion-nav-button class="button button-clear button-positive"
+                        data-ng-if="EventListCtrl.showDelete == true"
+                        data-ng-click="EventListCtrl.showDelete = false">
+            Cancel
+        </ion-nav-button>
+        <ion-nav-button class="button button-clear button-positive"
+                        data-ng-if="!EventListCtrl.showDelete"
+                        data-ng-click="EventListCtrl.showDelete = true"
+                        ng-disabled="{{EvenListCtrl.disableEdit()}}">
+            Edit
+        </ion-nav-button>
     </ion-nav-buttons>
     <ion-content>
-        <ion-list>
+        <ion-list show-delete="EventListCtrl.showDelete == true">
             <ion-item class="item-remove-animate item-thumbnail-left item-icon-right"
                       ng-repeat="event in EventListCtrl.events"
                       type="item-text-wrap" href="#/tab/events/{{event.id}}"
                       href="#/tab/events/{{event.id}}">
                 <h2>{{event.title}}</h2>
                 <i class="icon ion-chevron-right icon-accessory"></i>
+                <div></div>
 
+                <ion-delete-button class="ion-minus-circled"
+                                   ng-click="EventListCtrl.removeEvent(event)">
+                </ion-delete-button>
 
                 <ion-option-button class="button-positive" data-ng-click="EventListCtrl.addToCalendar(event)">
                     <i class="icon ion-calendar"></i>
@@ -21,4 +35,7 @@
             </ion-item>
         </ion-list>
     </ion-content>
+    <ion-footer-bar class="bar-light">
+        <a class="button button-clear button-positive pull-right" href="#/tab/events/create">Add</a>
+    </ion-footer-bar>
 </ion-view>
