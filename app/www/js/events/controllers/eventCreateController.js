@@ -1,11 +1,15 @@
-angular.module('events').controller('eventCreateController', ['eventsService', 'events', function(eventsService, events) {
-    var ctrl = this;
+angular.module('events').controller('eventCreateController', ['$location', 'eventsService', 'events',
+    function($location, eventsService, events) {
+        var ctrl = this;
+        init();
 
-    ctrl.init = function() {
-        ctrl.event = events.create();
-    };
+        function init() {
+            ctrl.event = events.create();
+        }
 
-    ctrl.save = function() {
-        eventsService.addEvent(ctrl.event);
+        ctrl.saveEvent = function() {
+            eventsService.addEvent(ctrl.event);
+            $location.path('/tab/events');
+        }
     }
-}]);
+]);

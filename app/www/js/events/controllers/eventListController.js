@@ -1,8 +1,8 @@
 angular.module('events').controller('eventListController', ['eventsService', function (eventsService) {
     var ctrl = this;
-    ctrl.events = [];
+    init();
 
-    ctrl.init = function() {
+    function init() {
         ctrl.events = eventsService.getEvents();
     }
 }]);
