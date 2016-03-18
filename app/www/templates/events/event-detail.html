@@ -1,0 +1,23 @@
+<ion-view view-title="{{event.name}}">
+    <ion-nav-buttons side="secondary">
+        <ion-nav-button class="button button-clear button-positive" data-ng-click="EventDetailCtrl.updateEvent()">
+            Edit
+        </ion-nav-button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="row">
+            <div class="col col-33"></div>
+            <div class="col col-33">
+                <img class="col" ng-src="{{event.image}}" style="width: 64px; height: 64px">
+            </div>
+            <div class="col col-33"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>
+                    {{event.description}}
+                </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

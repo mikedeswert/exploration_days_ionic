@@ -5,8 +5,11 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
         create: create
     };
 
-    function create() {
-        return new Event();
+    function create(event) {
+        if(event == undefined) {
+            return new Event();
+        }
+        return toEvent(event);
     }
 
     function Event() {
@@ -14,6 +17,16 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
         this.date = new Date();
         this.startTime = getDefaultStartTime();
         this.endTime = new Date(this.startTime.getTime() + ONE_HOUR_IN_MILLISECONDS);
+
+        this.copy = function() {
+            var event = new Event();
+            event.id = this.id;
+            event.date = new Date(this.date.getTime());
+            event.startTime = new Date(this.startTime.getTime());
+            event.endTime = new Date(this.endTime.getTime());
+
+            return event;
+        }
     }
 
     function getDefaultStartTime() {
@@ -22,5 +35,9 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
         date.setMilliseconds(0);
 
         return date;
+    }
+
+    function toEvent(event) {
+        new Event().copy(event);
     }
 }]);

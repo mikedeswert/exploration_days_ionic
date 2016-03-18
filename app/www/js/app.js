@@ -94,9 +94,31 @@ angular.module('explorationdays', ['ionic', 'controllers', 'services', 'events',
                 url: '/events/create',
                 views: {
                     'tab-events': {
-                        templateUrl: 'templates/event-create.html',
+                        templateUrl: 'templates/events/event-create.html',
                         controller: 'eventCreateController',
                         controllerAs: 'EventCreateCtrl'
+                    }
+                }
+            })
+
+            .state('tab.event-detail', {
+                url: '/events/:eventId',
+                views: {
+                    'tab-events': {
+                        templateUrl: 'templates/events/event-detail.html',
+                        controller: 'eventDetailController',
+                        controllerAs: 'EventDetailCtrl'
+                    }
+                }
+            })
+
+            .state('tab.event-update', {
+                url: '/events/:eventId/update',
+                views: {
+                    'tab-events': {
+                        templateUrl: 'templates/events/event-update.html',
+                        controller: 'eventUpdateController',
+                        controllerAs: 'EventUpdateCtrl'
                     }
                 }
             })

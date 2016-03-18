@@ -1,0 +1,20 @@
+<div class="list">
+    <label class="item item-input">
+        <input type="text" placeholder="Title" data-ng-model="EventEditorDirectiveCtrl.event.title" required />
+    </label>
+    <label class="item item-input">
+        <span class="input-label">Date</span>
+        <input type="date" data-ng-model="EventEditorDirectiveCtrl.event.date" required/>
+    </label>
+    <label class="item item-input">
+        <span class="input-label">Start time</span>
+        <input type="time" data-ng-model="EventEditorDirectiveCtrl.event.startTime"/>
+    </label>
+    <label class="item item-input">
+        <span class="input-label">End time</span>
+        <input type="time" data-ng-model="EventEditorDirectiveCtrl.event.endTime"/>
+    </label>
+    <label class="item item-input">
+        <textarea rows="6" placeholder="Description" data-ng-model="EventEditorDirectiveCtrl.event.description"></textarea>
+    </label>
+</div>
