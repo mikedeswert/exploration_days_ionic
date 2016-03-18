@@ -1,15 +1,5 @@
 angular.module('controllers', [])
 
-    .controller('eventListController', function ($scope, eventsService) {
-        $scope.events = eventsService.getEvents();
-        $scope.addRandomEvent = function () {
-            var event = {};
-            event.id = Math.floor((1 + Math.random()) * 0x10000);
-            event.title = 'Title' + Math.floor((1 + Math.random()) * 1000);
-            $scope.events = eventsService.addEvent(event);
-        };
-    })
-
     .controller('DashCtrl', function ($scope) {
     })
 

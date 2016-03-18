@@ -1,15 +1,13 @@
-<ion-view view-title="Events">
+<ion-view view-title="Events" data-ng-init="EventListCtrl.init()">
     <ion-content>
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="event in events.list"
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="event in EventListCtrl.events.list"
                       type="item-text-wrap" href="#/tab/events/{{event.id}}">
                 <h2>{{event.title}}</h2>
             </ion-item>
         </ion-list>
     </ion-content>
     <ion-footer-bar align-title="left" class="bar-positive">
-        <div class="buttons">
-            <button class="button" ng-click="addRandomEvent()">Add Random Event</button>
-        </div>
+        <a class="button button-icon icon ion-plus" href="#/tab/events/create"></a>
     </ion-footer-bar>
 </ion-view>

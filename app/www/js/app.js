@@ -5,25 +5,25 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('explorationdays', ['ionic', 'ionic.utils', 'controllers', 'services'])
+angular.module('explorationdays', ['ionic', 'ionic.utils', 'controllers', 'services', 'events'])
 
-    .run(function ($ionicPlatform) {
-        $ionicPlatform.ready(function () {
+    .run(function($ionicPlatform) {
+        $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
-            if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+            if(window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
 
             }
-            if (window.StatusBar) {
+            if(window.StatusBar) {
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
             }
         });
     })
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider) {
 
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
@@ -59,6 +59,7 @@ angular.module('explorationdays', ['ionic', 'ionic.utils', 'controllers', 'servi
                     }
                 }
             })
+
             .state('tab.chat-detail', {
                 url: '/chats/:chatId',
                 views: {
@@ -84,10 +85,24 @@ angular.module('explorationdays', ['ionic', 'ionic.utils', 'controllers', 'servi
                 views: {
                     'tab-events': {
                         templateUrl: 'templates/tab-events.html',
-                        controller: 'eventListController'
+                        controller: 'eventListController',
+                        controllerAs: 'EventListCtrl'
                     }
                 }
-            });
+            })
+
+            .state('tab.event-create', {
+                url: '/events/create',
+                views: {
+                    'tab-events': {
+                        templateUrl: 'templates/event-create.html',
+                        controller: 'eventCreateController',
+                        controllerAs: 'EventCreateCtrl'
+                    }
+                }
+            })
+
+        ;
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/dash');
