@@ -48,6 +48,7 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
             event.date = new Date(this.date.getTime());
             event.startTime = new Date(this.startTime.getTime());
             event.endTime = new Date(this.endTime.getTime());
+            event.imageURI = this.imageURI;
 
             return event;
         }
@@ -70,6 +71,7 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
         newEvent.date = new Date(event.date);
         newEvent.startTime = new Date(event.startTime);
         newEvent.endTime = new Date(event.endTime);
+        newEvent.imageURI = event.imageURI;
 
         return newEvent;
     }
