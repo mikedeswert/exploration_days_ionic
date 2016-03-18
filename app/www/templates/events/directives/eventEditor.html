@@ -17,5 +17,7 @@
     <label class="item item-input">
         <textarea rows="6" placeholder="Description" data-ng-model="EventEditorDirectiveCtrl.event.description"></textarea>
     </label>
-    <button class="button" data-ng-click="EventEditorDirectiveCtrl.takePhoto()">Add Picture</button>
+    <button class="button" data-ng-click="EventEditorDirectiveCtrl.takePhoto()">Take Picture</button>
+    <button class="button" data-ng-click="EventEditorDirectiveCtrl.choosePhoto()">Choose Picture</button>
+    <img ng-src="{{EventEditorDirectiveCtrl.event.imageURI}}"/>
 </div>

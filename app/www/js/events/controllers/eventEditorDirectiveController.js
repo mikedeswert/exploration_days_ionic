@@ -16,34 +16,43 @@ angular.module('events').controller('eventEditorDirectiveController', ['events',
                 quality: 75,
                 destinationType: Camera.DestinationType.DATA_URL,
                 sourceType: Camera.PictureSourceType.CAMERA,
-                allowEdit: true,
-                encodingType: Camera.EncodingType.JPEG,
                 targetWidth: 300,
                 targetHeight: 300,
+                allowEdit: false,
+                encodingType: Camera.EncodingType.JPEG,
                 popoverOptions: CameraPopoverOptions,
-                saveToPhotoAlbum: false
+                saveToPhotoAlbum: false,
+                correctOrientation: true
             };
 
             $cordovaCamera.getPicture(options).then(function (imageData) {
-                console.log(imageData);
-                //$scope.imgURI = "data:image/jpeg;base64," + imageData;
+                ctrl.event.imageURI = "data:image/jpeg;base64," + imageData;
             }, function (err) {
-                // An error occured. Show a message to the user
+
             });
         });
     };
 
+    ctrl.choosePhoto = function () {
+        $ionicPlatform.ready(function () {
+            var options = {
+                quality: 75,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                targetWidth: 300,
+                targetHeight: 300,
+                allowEdit: false,
+                encodingType: Camera.EncodingType.JPEG,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                correctOrientation: true
+            };
 
-    document.addEventListener("deviceready", function () {
-        console.log('aha');
-        ctrl.takePicture = function () {
-            var options = {limit: 3};
-
-            $cordovaCapture.captureImage(options).then(function (imageData) {
-                console.log(imageData);
+            $cordovaCamera.getPicture(options).then(function (imageData) {
+                ctrl.event.imageURI = "data:image/jpeg;base64," + imageData;
             }, function (err) {
-                console.log(err);
+
             });
-        };
-    }, false);
+        });
+    };
 }]);
