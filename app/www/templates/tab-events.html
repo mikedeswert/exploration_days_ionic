@@ -4,13 +4,17 @@
     </ion-nav-buttons>
     <ion-content>
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right"
+            <ion-item class="item-remove-animate item-thumbnail-left item-icon-right"
                       ng-repeat="event in EventListCtrl.events"
                       type="item-text-wrap" href="#/tab/events/{{event.id}}"
                       href="#/tab/events/{{event.id}}">
                 <h2>{{event.title}}</h2>
                 <i class="icon ion-chevron-right icon-accessory"></i>
 
+
+                <ion-option-button class="button-positive" data-ng-click="EventListCtrl.addToCalendar(event)">
+                    <i class="icon ion-calendar"></i>
+                </ion-option-button>
                 <ion-option-button class="button-assertive" data-ng-click="EventListCtrl.removeEvent(event)">
                     Delete
                 </ion-option-button>
