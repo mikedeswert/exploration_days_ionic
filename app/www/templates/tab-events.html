@@ -6,9 +6,8 @@
             Cancel
         </ion-nav-button>
         <ion-nav-button class="button button-clear button-positive"
-                        data-ng-if="!EventListCtrl.showDelete"
-                        data-ng-click="EventListCtrl.showDelete = true"
-                        ng-disabled="{{EvenListCtrl.disableEdit()}}">
+                        data-ng-if="EventListCtrl.showEdit()"
+                        data-ng-click="EventListCtrl.showDelete = true">
             Edit
         </ion-nav-button>
     </ion-nav-buttons>

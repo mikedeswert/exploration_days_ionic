@@ -15,8 +15,8 @@ angular.module('events').controller('eventListController', ['$cordovaCalendar', 
             }
         };
 
-        ctrl.disableEdit = function() {
-            return ctrl.events.length <= 0;
+        ctrl.showEdit = function() {
+            return ctrl.showDelete == false && ctrl.events.length > 0;
         };
 
         ctrl.addToCalendar = function(event) {
