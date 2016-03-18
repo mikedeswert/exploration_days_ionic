@@ -16,7 +16,7 @@ angular.module('utils').factory('localStorage', ['$window', function ($window) {
             this.setObject(key, value);
         },
         getArray: function(key) {
-            return JSON.parse($window.localStorage[key || '[]'])
+            return JSON.parse($window.localStorage[key] || '[]');
         }
     }
 }]);

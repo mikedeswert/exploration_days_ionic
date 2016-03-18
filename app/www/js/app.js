@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('explorationdays', ['ionic', 'controllers', 'services', 'events', 'utils'])
+angular.module('explorationdays', ['ionic', 'controllers', 'services', 'events', 'utils', 'uuid4'])
 
     .run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
