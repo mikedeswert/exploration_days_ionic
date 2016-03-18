@@ -1,4 +1,4 @@
-angular.module('events').factory('eventsService', ['$localstorage', function($localstorage) {
+angular.module('events').factory('eventsService', ['localStorage', function(localStorage) {
     var events;
 
     return {
@@ -9,18 +9,18 @@ angular.module('events').factory('eventsService', ['$localstorage', function($lo
 
     function getEvents() {
         if(events == undefined) {
-            events = $localstorage.getArray('events');
+            events = localStorage.getArray('events');
         }
         return events;
     }
 
     function addEvent(event) {
         events.push(event);
-        $localstorage.setObject('events', events);
+        localStorage.setObject('events', events);
     }
 
     function removeEvent(event) {
         events.splice(events.indexOf(event), 1);
-        $localstorage.setObject('events', events);
+        localStorage.setObject('events', events);
     }
 }]);
