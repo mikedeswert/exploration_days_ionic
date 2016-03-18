@@ -20,6 +20,26 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
         this.startTime = getDefaultStartTime();
         this.endTime = new Date(this.startTime.getTime() + ONE_HOUR_IN_MILLISECONDS);
 
+        this.getStartDate = function() {
+            var startDate = new Date(this.date.getTime());
+            startDate.setHours(this.startTime.getHours());
+            startDate.setMinutes(this.startTime.getMinutes());
+            startDate.setSeconds(this.startTime.getSeconds());
+            startDate.setMilliseconds(this.startTime.getMilliseconds());
+
+            return startDate;
+        };
+
+        this.getEndDate = function() {
+            var endDate = new Date(this.date.getTime());
+            endDate.setHours(this.endTime.getHours());
+            endDate.setMinutes(this.endTime.getMinutes());
+            endDate.setSeconds(this.endTime.getSeconds());
+            endDate.setMilliseconds(this.endTime.getMilliseconds());
+
+            return endDate;
+        };
+
         this.copy = function() {
             var event = new Event();
             event.id = this.id;
@@ -42,6 +62,15 @@ angular.module('events').factory('events', ['uuid4', function(uuid4) {
     }
 
     function toEvent(event) {
-        new Event().copy(event);
+        var newEvent = new Event();
+
+        newEvent.id = event.id;
+        newEvent.title = event.title;
+        newEvent.description = event.description;
+        newEvent.date = new Date(event.date);
+        newEvent.startTime = new Date(event.startTime);
+        newEvent.endTime = new Date(event.endTime);
+
+        return newEvent;
     }
 }]);
